@@ -1,15 +1,14 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from app.routes import views
-import os
 
 from datadog import initialize, statsd
 from ddtrace import patch, config
 
 # Configure and initialize datadog statsd
 options = {
-    'statsd_host':'0.0.0.0',
-    'statsd_port':8125
+    'statsd_host': '0.0.0.0',
+    'statsd_port': 8125
 }
 initialize(**options)
 
