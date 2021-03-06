@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from routes import views
+from app.routes import views
 
 app = FastAPI()
 
