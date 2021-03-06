@@ -2,5 +2,5 @@ from typing import Dict
 
 
 def health_func() -> Dict[str, str]:
-    """The health function."""
+    """This function returns a default ok."""
     return "ok"

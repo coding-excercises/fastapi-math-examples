@@ -7,5 +7,5 @@ router = APIRouter()
 
 @router.get("/health/", tags=["health"])
 async def health() -> Dict[str, str]:
-    """The health controller."""
+    """This controller returns the health of API."""
     return health_func()
