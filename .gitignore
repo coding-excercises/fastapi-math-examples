@@ -131,3 +131,4 @@ dmypy.json
 # virtualenv scripts folder, env files
 Scripts/
 pyvenv.cfg
+heroku.cfg
