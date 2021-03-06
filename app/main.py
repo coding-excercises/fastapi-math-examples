@@ -4,7 +4,8 @@ from app.routes import views
 import os
 
 from datadog import initialize, statsd
-from ddtrace import patch, config
+from ddtrace_asgi.middleware import TraceMiddleware
+# from ddtrace import patch, config
 
 # Configure and initialize datadog statsd
 options = {
@@ -14,8 +15,8 @@ options = {
 initialize(**options)
 
 # Enable datadog tracing
-config.fastapi['service_name'] = 'fastapi-math-examples'
-patch(fastapi=True)
+# config.fastapi['service_name'] = 'fastapi-math-examples'
+# patch(fastapi=True)
 
 app = FastAPI()
 
@@ -29,3 +30,7 @@ app.add_middleware(
 )
 
 app.include_router(views.router)
+app.add_middleware(
+    TraceMiddleware,
+    service="fastapi-math-examples",
+)
