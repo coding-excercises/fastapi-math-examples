@@ -8,7 +8,7 @@ from ddtrace import patch, config
 
 # Configure and initialize datadog statsd
 options = {
-    'statsd_host':'127.0.0.1',
+    'statsd_host':'0.0.0.0',
     'statsd_port':8125
 }
 initialize(**options)
