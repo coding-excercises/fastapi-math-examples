@@ -1,6 +1,11 @@
+import unittest
 from app.api.health_fn import health_func
 
 
-def test_func_health() -> None:
-    result = health_func()
-    assert result == "ok"
+class HealthTestSuite(unittest.TestCase):
+    """Test the health function."""
+
+
+    def test_func_health(self) -> None:
+        result = health_func()
+        assert result == "ok"
