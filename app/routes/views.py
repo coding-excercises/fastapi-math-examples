@@ -11,12 +11,14 @@ async def home() -> Dict[str, str]:
     """Give the user the home API."""
     return "FastAPI Math Examples"
 
+
 @router.get("/health/", tags=["health"])
 async def health() -> Dict[str, str]:
     """Give the user the health of API."""
     return health_func()
 
+
 @router.get("/math/add", tags=["math - add"])
 async def math_add(a: int = 0, b: int = 0) -> Dict[str, int]:
-    """Give the user the result of a simple addition"""
+    """Give the user the result of a simple addition."""
     return add_func(a, b)
