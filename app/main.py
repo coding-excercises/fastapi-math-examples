@@ -3,7 +3,8 @@ from starlette.middleware.cors import CORSMiddleware
 from app.routes import views
 
 from datadog import initialize, statsd
-from ddtrace import patch, config
+from ddtrace import patch, config, patch_all
+
 
 # Configure and initialize datadog statsd
 options = {
@@ -15,6 +16,7 @@ initialize(**options)
 # Enable datadog tracing
 config.fastapi['service_name'] = 'fastapi-math-examples'
 patch(fastapi=True)
+patch_all(logging=True)
 
 app = FastAPI()
 
