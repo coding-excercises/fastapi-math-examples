@@ -6,13 +6,15 @@ from ddtrace import tracer
 import logging
 
 FORMAT = ('%(asctime)s %(levelname)s [%(name)s] [%(filename)s:%(lineno)d] '
-          '[dd.service=fastapi-math-examples dd.env=dev dd.version=v1 dd.trace_id=%(dd.trace_id)s dd.span_id=%(dd.span_id)s] '
+          '[dd.service=fastapi-math-examples dd.env=dev dd.version=v1 '
+          'dd.trace_id=%(dd.trace_id)s dd.span_id=%(dd.span_id)s] '
           '- %(message)s')
 logging.basicConfig(format=FORMAT)
 log = logging.getLogger(__name__)
 log.level = logging.INFO
 
 router = APIRouter()
+
 
 @tracer.wrap()
 @router.get("/", tags=["home"])
