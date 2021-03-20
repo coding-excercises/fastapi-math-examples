@@ -3,7 +3,7 @@ from fastapi import APIRouter
 from app.api.health_fn import health_func
 from app.api.math_fn import add_func
 from app.api.currency_fn import currency_func
-from app.api.nlp_fn import get_aspect_sentiment_func
+from app.api.nlp_fn import get_sentiment_func
 from ddtrace import tracer
 import logging
 
@@ -51,12 +51,7 @@ async def currency_conv(from_curr: str = 'USD',
 
 @tracer.wrap()
 @router.get("/ai/sentiment", tags=["ai - sentiment"])
-async def get_sentiment(input_text: str, 
-                        input_entity1: str,
-                        input_entity2: str) -> Dict[str, str]:
+async def get_sentiment(input_text: str) -> Dict[str, str]:
     """Give the user the result of sentiment analysis."""
-    log.info("Input for currency conversion: %s %s %s", 
-            input_text, input_entity1, input_entity2)
-    return get_aspect_sentiment_func(input_text,
-                                    input_entity1,
-                                    input_entity2)
+    log.info("Input for sentiment analysis: %s ", input_text)
+    return get_sentiment_func(input_text)

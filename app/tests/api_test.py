@@ -34,6 +34,6 @@ def test_get_currency():
 
 def test_get_sentiment():
     """Test the API ai sentiment controller."""
-    response = client.get("/ai/sentiment?input_text=friends%20and%20i%20are%20very%20happy%20playing%20video%20games.%20but%20my%20parents%20and%20friends%20are%20not%20happy.&input_entity1=friends&input_entity2=parents")
+    response = client.get("/ai/sentiment?input_text=Company%20shares%20are%20going%20up.%20But%2C%20employees%20are%20unhappy.")
     assert response.status_code == 200
-    assert response.json() == ["Sentiment.positive","2","Sentiment.negative","1"]
+    assert response.json() == {"neg": 0.301,"neu": 0.569,"pos": 0.13,"compound": -0.4767}
