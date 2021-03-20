@@ -6,8 +6,6 @@ python:
 # Command to install dependencies
 install:
   - pip install -r requirements.txt
-  - python -m textblob.download_corpora
-  - python -m spacy download en_core_web_sm
 # Command to run tests
 script:
   - coverage run --source=app -m pytest app/tests/
