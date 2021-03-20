@@ -132,3 +132,7 @@ dmypy.json
 Scripts/
 pyvenv.cfg
 heroku.cfg
+
+# misc folders that are not required
+include/
+share/

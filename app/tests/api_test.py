@@ -30,3 +30,10 @@ def test_get_currency():
     response = client.get("/util/currency?from_curr=USD&to_curr=INR&amt=1")
     assert response.status_code == 200
     assert response.json() >= 70
+
+
+def test_get_sentiment():
+    """Test the API ai sentiment controller."""
+    response = client.get("/ai/sentiment?input_text=friends%20and%20i%20are%20very%20happy%20playing%20video%20games.%20but%20my%20parents%20and%20friends%20are%20not%20happy.&input_entity1=friends&input_entity2=parents")
+    assert response.status_code == 200
+    assert response.json() == ["Sentiment.positive","2","Sentiment.negative","1"]
