@@ -41,7 +41,8 @@ async def math_add(a: int = 0, b: int = 0) -> Dict[str, int]:
 
 @tracer.wrap()
 @router.get("/util/currency", tags=["util - currency"])
-async def currency_conv(from_curr: str = 'USD', to_curr: str = 'INR', amt: float= 0.0) -> Dict[str, float]:
+async def currency_conv(from_curr: str = 'USD', 
+    to_curr: str = 'INR', amt: float= 0.0) -> Dict[str, float]:
     """Give the user the result of currency conversion."""
     log.info("Input for currency conversion: %s %s %s", from_curr, to_curr, amt)
     return currency_func(amt, from_curr, to_curr)
